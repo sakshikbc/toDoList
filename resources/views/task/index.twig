@@ -1,0 +1,26 @@
+{# @extends('layouts.app') #}
+{% extends 'layouts.app' %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Add new Task</div>
+                <div class="card-body">
+                    <form method="post" action="{{ route('task.add') }}">
+                        <input type="text" name="body" placeholder="task">
+                        <button name="add">Add</button>
+                    </form>
+                </div>
+            <div class="card">
+                <div class="card-header">To Do Lists</div>
+                {% for task in tasks %}
+                <div class="card-body">
+                    {{ task.body }}
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

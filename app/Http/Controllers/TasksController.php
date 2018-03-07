@@ -5,18 +5,18 @@ namespace App\Http\Controllers;
 use App\Task;
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class TasksController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // dd("hey");
-        $tasks = Task::latest()->get();
-        return view('task.tasks', compact('tasks'));
+        $tasks = Task::all();
+        return view('task.index', compact('tasks'));
     }
 
     /**
@@ -24,9 +24,9 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -37,10 +37,12 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'body' => 'required',
-        ]);
-        return Task::create([ 'body' => $request('body') ]);
+        dd($request);
+        // $this->validate($request, [
+        //     'body' => 'required',
+        // ]);
+        // Task::create([ 'body' => $request('body') ]);
+        // return back();
     }
 
     /**

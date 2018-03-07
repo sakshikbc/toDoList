@@ -9,8 +9,18 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+        public function run()
     {
+    	DB::table('users')->insert([
+            'name' => str_random(10),
+            'email' => str_random(10).'@gmail.com',
+            'password' => bcrypt('secret'),
+        ]);
         // $this->call(UsersTableSeeder::class);
+        DB::table('tasks')->insert([
+        	'user_id' => str_random(1),
+            'body' => str_random(50),
+        ]);
     }
+
 }

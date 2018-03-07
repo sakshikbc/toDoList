@@ -16,10 +16,11 @@ Route::get('/', function () {
 });
 
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 // Route::prefix('api')->group(function() {
 //     Route::resource('tasks', 'TaskController');
 // });
-    Route::resource('tasks', 'TaskController');
+    Route::get('/tasks', 'TasksController@index');
+    Route::post('/tasks', 'TasksController@create')->name('task.add');
